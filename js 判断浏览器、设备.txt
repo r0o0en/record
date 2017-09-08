@@ -1,0 +1,58 @@
+//ÅÐ¶Ïweb¶Ëä¯ÀÀÆ÷°æ±¾
+function liulanqi(fun) {
+	var funs = {
+		IE: function() {},
+		Firefox: function() {},
+		Opera: function() {},
+		Chrome: function() {}
+	};
+	var num = $.extend({}, funs, fun);
+	if((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+		num.IE(navigator.userAgent);
+	} else if(navigator.userAgent.indexOf('Firefox') >= 0) {
+		num.Firefox(navigator.userAgent);
+	} else if(navigator.userAgent.indexOf('Opera') >= 0) {
+		num.Opera(navigator.userAgent);
+	} else {
+		num.Chrome(navigator.userAgent);
+	}
+}
+
+// ÅÐ¶ÏIE°æ±¾
+if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)){
+	var iebb=navigator.appVersion.split(";")[1].replace(/[ ]/g,"");
+	var reg = /\d+/g;
+		iebb = iebb.match(reg)
+		iebb=parseFloat(iebb);
+	if(iebb>9){
+		new WOW().init();
+	}
+}else{
+	new WOW().init();
+}
+
+
+// ÅÐ¶Ïä¯ÀÀÆ÷ÀàÐÍ
+function is_browser() {
+	if(navigator.userAgent.indexOf("x5app") >= 0 || navigator.userAgent.indexOf("Crosswalk") >= 0) {
+		return "app";
+	} else if(navigator.userAgent.indexOf("MicroMessenger") >= 0) {
+		//Î¢ÐÅ
+		return "wechat";
+	} else {
+		//ä¯ÀÀÆ÷
+		return "browser";
+	}
+}
+
+// ÖÕ¶ËÅÐ¶Ï
+//	1¡¢ÅÐ¶Ïµ±Ç°ÊÇ·ñÎªÆ»¹ûÉè±¸  => 2¡¢ÅÐ¶ÏÊÇ·ñÎªapp
+var ua = navigator.userAgent.toLowerCase();
+if(/iphone|ipad|ipod/.test(ua)) {
+	var bow = is_browser();
+	if(bow == "app") {
+		
+	} else {
+		
+	}
+}

@@ -1,0 +1,25 @@
+/*添加、移除事件*/
+			if(typeof addEvent != 'function'){ 
+				var addEvent = function (obj,type,fun) {
+					 if (window.addEventListener) {//ie9+ chrome fireFox
+			            obj.addEventListener(type, fun, false);
+			            //this 指向 obj
+			            //e.target 指向obj
+			        } else if (window.attachEvent) {//旧版本ie(edge不支持)
+			            obj.attachEvent('on' + type, fun);
+			            //this 指向window
+			            //e.srcElement 指向obj
+			        } else {
+			            obj['on' + type] = fun;
+			        }
+			    }
+				var removeEvent = function (obj,type,fun) {
+					if (window.removeEventListener) {//ie9+ chrome fireFox
+			            obj.removeEventListener(type, fun, false);
+			        } else if (window.detachEvent) {//旧版本ie(edge不支持)
+			            obj.detachEvent('on' + type, fun);
+			        } else {
+			            obj['on' + type] = null;
+			        }
+				}
+			};

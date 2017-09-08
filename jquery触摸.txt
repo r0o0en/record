@@ -1,0 +1,47 @@
+var wptest1=$('#slider');
+wptest1.on('touchstart',function(e){
+			    	console.log('手指放到屏幕上的时候触发');
+					console.log(e.originalEvent.changedTouches[0]);
+			    })
+			    wptest1.on('touchmove',function(e){
+			    	console.log('手指在屏幕上移动的时候触发');
+			    	console.log(e.originalEvent.changedTouches[0]);
+			    })
+			    wptest1.on('touchend',function(e){
+			    	console.log('手指离开屏幕的时候触发');
+					console.log(e.originalEvent.changedTouches[0]);
+			    })
+			    wptest1.on('touchcancel',function(e){
+			    	console.log('系统关闭touch事件的时候触发');
+					console.log(e.originalEvent.changedTouches[0]);
+			    })
+
+
+/*===========================*/
+function touchSlider (wp,fun) {
+			    	var initial={
+						start:function(x){},
+						move:function(x){},
+						end:function(x){}
+					}
+					var o =$.extend({}, initial,fun);
+					var x,y,startx,starty,endx,endy;
+					wptest1.on('touchstart',function(e){
+						startx = e.originalEvent.changedTouches[0].clientX;
+					    starty = e.originalEvent.changedTouches[0].clientY;
+						o.start({x:startx,y:starty});
+						wp.on("touchmove",movefun);
+				    })
+					wp.on("touchend", function(e) {
+						wp.off('touchmove',movefun);
+					    o.end({x:startx,y:starty,x2:endx,y2:endy});
+					});
+					function movefun(ee) {
+						ee.preventDefault();
+						endx = ee.originalEvent.changedTouches[0].clientX;
+						endy = ee.originalEvent.changedTouches[0].clientY;
+						x = endx - startx;
+						y = endy - starty;
+						o.move({x:startx,y:starty,x2:endx,y2:endy});
+					}
+			    }

@@ -1,0 +1,8 @@
+http://nodejs.cn/download/  下载.msi
+安装后在安装目录下 点击npm.cmd 自动配置环境
+
+怎么在命令行中查看nodejs和npm的版本号
+
+1、nodejs版本号：直接在命令行中输入`node -v`
+
+2、npm版本号：直接在命令行中输入`npm -v`

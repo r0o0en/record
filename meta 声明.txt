@@ -1,0 +1,156 @@
+参考页面：http://www.360doc.com/content/11/0419/13/67582_110744490.shtml
+
+一、meta标签的组成
+
+ 1、name属性
+
+  A、Keywords(关键字)
+　　说明：keywords用来告诉搜索引擎你网页的关键字是什么。
+　　举例：＜meta name ="keywords" content="science, education,culture,politics,ecnomics，relationships, entertaiment, human"＞
+
+  B、description(网站内容描述)
+　　说明：description用来告诉搜索引擎你的网站主要内容。
+　　举例：＜meta name="description" content="This page is about the meaning of science, education,culture."＞
+
+  C、robots(机器人向导)
+　　说明：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。
+　　content的参数有all,none,index,noindex,follow,nofollow。默认是all。
+　　举例：＜meta name="robots" content="none"＞
+
+  D、author(作者)
+　　说明：标注网页的作者
+　　举例：＜meta name="author" content"root,root@21cn.com"＞
+
+ 2、http-equiv属性
+
+　A、Expires(期限)
+　　说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。
+　　用法：＜meta http-equiv="expires" content="Fri, 12 Jan 2001 18:18:18 GMT"＞
+　　注意：必须使用GMT的时间格式。
+
+  B、Pragma(cache模式)
+　　说明：禁止浏览器从本地计算机的缓存中访问页面内容。
+　　用法：＜meta http-equiv="Pragma" content="no-cache"＞
+　　注意：这样设定，访问者将无法脱机浏览。
+
+　C、Refresh(刷新)
+　　说明：自动刷新并指向新页面。
+　　用法：＜meta http-equiv="Refresh" content="2；URL=http://www.root.net"＞
+　　注意：其中的2是指停留2秒钟后自动刷新到URL网址。
+
+　D、Set-Cookie(cookie设定)
+　　说明：如果网页过期，那么存盘的cookie将被删除。
+　　用法：＜meta http-equiv="Set-Cookie" content="cookievalue=xxx; expires=Friday, 12-Jan-2001 18:18:18 GMT； path=/"＞
+　　注意：必须使用GMT的时间格式。
+
+　E、Window-target(显示窗口的设定)
+　　说明：强制页面在当前窗口以独立页面显示。
+　　用法：＜meta http-equiv="Window-target" content="_top"＞
+　　注意：用来防止别人在框架里调用自己的页面。
+
+　F、content-Type(显示字符集的设定)
+　　说明：设定页面使用的字符集。
+　　用法：＜meta http-equiv="content-Type" content="text/html; charset=gb2312"＞
+
+二、meta标签的功能
+
+ 1、帮助主页被各大搜索引擎登录
+
+ 2、定义页面的使用语言
+    ＜meta http-equiv=″content－Type″ content=″text/html; charset=gb2312″〉
+    英语：charset=en
+
+ 3、自动刷新并指向新的页面
+   〈meta http-equiv=″refresh″ content=″２; URL=http://www.root.net″〉
+    说明：使当前网页在２秒后自动转到http://www.root.net页面中去
+  
+ 4、实现网页转换时的动画效果
+
+ 5、网页定级评价
+
+ 6、控制网页显示的窗口
+   ＜metahttp-equiv="window-target" content="_top"＞
+   说明：段代码可以防止网页被别人作为一个Frame调用。
+   注意：“_top”链接文件全屏显示。
+
+ 7、Refresh (刷新) 
+   说明：让网页多长时间（秒）刷新自己，或在多长时间后让网页自动链接到其它网页。 
+   用法：
+	<Meta http-equiv="Refresh" Content="30"> //只刷新
+	<Meta http-equiv="Refresh" Content="5; Url=http://www.020webseo.com">  //跳转
+　　    注意：其中的5是指停留5秒钟后自动刷新到URL网址。
+
+ 8、控制页面缓冲
+   说明：meta标签可以设置网页到期的时间
+  〈meta http-equiv=″expires″ content=″Friday, 12-Jan-2001 18:18:18 GMT″〉
+   说明：这段代码就表示网页的到期时间是2001年1月12日18时18分18秒，浏览器会自动浏览缓冲区里的页面,直到meta中设置的时间到期。
+   注意：必须使用GMT的时间格式，或直接设为0(数字表示多少时间后过期)。 
+
+ 9、Pragma (cach模式) 
+　 说明：禁止浏览器从本地机的缓存中调阅页面内容。 
+　 用法：<Meta http-equiv="Pragma" Content="No-cach"> 
+　 注意：网页不保存在缓存中，每次访问都刷新页面。这样设定，访问者将无法脱机浏览。 
+
+三、Head中的其它一些用法
+
+ 1、scheme (方案)
+   说明：使用 scheme 属性来定义 content 属性的格式：
+   <meta name="date" content="2009-01-02" scheme="YYYY-MM-DD">
+   <meta name="identifier" content="0-2345-6634-6" scheme="ISBN">
+  
+ 2、Link (链接)
+   说明：链接到文件
+　 用法：<Link href="soim.ico" rel="Shortcut Icon">
+
+ 3、Base (基链接)
+　　说明：插入网页基链接属性
+　　用法：<Base href="http://www.chenzehua.com/" target="_blank">
+  　注意：你网页上的所有相对路径在链接时都将在前面加上“http://www.chenzehua.com/”。
+ 
+四、常用meat标签说明
+
+1、让用户的IE浏览器使用Google Chrome浏览器内核
+  资料：http://www.cnblogs.com/lovecode/articles/3377505.html
+  用法：
+    <meta http-equiv= "X-UA-Compatible" content="IE=edge,chrome=1" />
+    这样写可以达到的效果是如果安装了GCF，则使用GCF来渲染页面，如果为安装GCF，则使用最高版本的IE内核进行渲染。
+
+2、指定360安全浏览器使用 webkit 内核渲染
+  资料：http://www.ihref.com/read-16623.html
+  <meta name="renderer" content="webkit">
+  注意：
+     // <meta name="renderer" content="webkit|ie-comp|ie-stand">
+     // content 的取值为 webkit, ie-comp, ie-stand 之一，区分大小写，分别代表用 webkit 内核，IE 兼容内核，IE 标准内核。
+
+3、让浏览器等比例缩放（响应式必需）
+  资料：http://blog.csdn.net/macwhirr123/article/details/11971303
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+  注意：
+	而如果你的网站不是响应式的，请不要使用 initial-scale 或者禁用缩放。
+  参数：
+	width - viewport（窗口）的宽度 height - viewport（窗口）的高度
+	initial-scale - 初始的缩放比例
+	minimum-scale - 允许用户缩放到的最小比例
+	maximum-scale - 允许用户缩放到的最大比例
+	user-scalable - 用户是否可以手动缩放
+  minimal-ui
+	minimal-ui 是 iOS 7.1 beta 2 中新增属性，可以在页面加载时最小化上下状态栏。这是一个布尔值
+	可以直接这样写：<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui"> 
+
+
+4、在iPhone 手机上数字（手机号码）不被显示为拨号链接
+  资料：http://blog.csdn.net/macwhirr123/article/details/11971303
+  <meta name="telephone=no" content="format-detection">
+  <meta http-equiv="x-rim-auto-match" content="none">
+
+5、iOS设备对meta定义的私有属性：（可以添加至主屏幕）
+  资料：http://blog.csdn.net/macwhirr123/article/details/11971303
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+6、网站开启对web app程序的支持
+  资料：http://blog.csdn.net/macwhirr123/article/details/11971303
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  注意：
+      在web app应用下状态条（屏幕顶部条）的颜色；
+      默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明）。
+      若值为“black-translucent”将会占据页面px位置，浮在页面上方（会覆盖页面20px高度–iphone4和itouch4的Retina屏幕为40px）。

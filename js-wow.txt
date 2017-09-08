@@ -1,0 +1,16 @@
+if(winWid >= 768 && (navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+		var iebb = navigator.appVersion.split(";")[1].replace(/[ ]/g, "");
+		var reg = /\d+/g;
+		iebb = iebb.match(reg)
+		iebb = parseFloat(iebb);
+		IEbb=iebb;
+		if(iebb > 9) {
+			$.getScript('wow.min.js',function() {
+				new WOW().init();
+			});
+		}
+} else if(winWid >= 768){
+	$.getScript('js/wow.min.js',function() {
+		new WOW().init();
+	});
+}

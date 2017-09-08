@@ -1,0 +1,7 @@
+ jquery is(":hidden") 
+	is(":visible")
+
+//监听元素文本变化
+$(".dots").bind('DOMNodeInserted', function(e) {  
+		    console.log('element now contains: ' + $(e.target).html());  
+		}); 

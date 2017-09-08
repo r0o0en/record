@@ -1,0 +1,17 @@
+function imgloadstate(imgs,fun,Time) {
+	var ys, boole,
+		time=Time || 500,
+		img = imgs[0];
+//	console.log(img);
+	function pd() {
+		boole = img.complete;
+//		console.log(boole);
+		if(boole) {
+			fun();
+			clearTimeout(ys);
+		} else {
+			ys = setTimeout(pd, time);
+		}
+	}
+	pd();
+}

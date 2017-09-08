@@ -1,0 +1,25 @@
+单行文本省略
+    overflow: hidden;	
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+
+文本行数限制
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+同级元素 自动适应宽度
+  --父元素--
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  --需匹配子元素--
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;

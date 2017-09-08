@@ -1,0 +1,17 @@
+// 取当前页面名称(不带后缀名)
+    function pageName()
+    {
+        var a = location.href;
+        var b = a.split("/");
+        var c = b.slice(b.length-1, b.length).toString(String).split(".");
+        return c.slice(0, 1);
+    }
+
+     //取当前页面名称(带后缀名)
+    function pageName()
+     {
+         var strUrl=location.href;
+         var arrUrl=strUrl.split("/");
+         var strPage=arrUrl[arrUrl.length-1];
+         return strPage;
+     }

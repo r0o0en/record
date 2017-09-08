@@ -1,0 +1,34 @@
+ function stopEvent(event){ //阻止冒泡事件
+     //取消事件冒泡
+     var e=arguments.callee.caller.arguments[0]||event; //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容
+     if (e && e.stopPropagation) {
+     // this code is for Mozilla and Opera
+     e.stopPropagation();
+     } else if (window.event) {
+     // this code is for IE
+      window.event.cancelBubble = true;
+     }
+    }
+
+1.阻止事件冒泡,使成为捕获型事件触发机制.
+
+function stopBubble(e) { 
+	//如果提供了事件对象，则这是一个非IE浏览器 
+	if ( e && e.stopPropagation ) 
+	    //因此它支持W3C的stopPropagation()方法 
+	    e.stopPropagation(); 
+	else
+	    //否则，我们需要使用IE的方式来取消事件冒泡 
+	    window.event.cancelBubble = true; 
+}
+
+2. 阻止浏览器的默认行为 
+function stopDefault( e ) { 
+    //阻止默认浏览器动作(W3C) 
+    if ( e && e.preventDefault ) 
+        e.preventDefault(); 
+    //IE中阻止函数器默认动作的方式 
+    else
+        window.event.returnValue = false; 
+    return false; 
+}

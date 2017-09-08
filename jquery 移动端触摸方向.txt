@@ -1,0 +1,147 @@
+$("body").on("touchstart", function(e) {
+    e.preventDefault();
+    startX = e.originalEvent.changedTouches[0].pageX,
+    startY = e.originalEvent.changedTouches[0].pageY;
+});
+$("body").on("touchmove", function(e) {
+    e.preventDefault();
+    moveEndX = e.originalEvent.changedTouches[0].pageX,
+    moveEndY = e.originalEvent.changedTouches[0].pageY,
+    X = moveEndX - startX,
+    Y = moveEndY - startY;
+     
+    if ( Math.abs(X) > Math.abs(Y) && X > 0 ) {
+        alert("left 2 right");
+    }
+    else if ( Math.abs(X) > Math.abs(Y) && X < 0 ) {
+        alert("right 2 left");
+    }
+    else if ( Math.abs(Y) > Math.abs(X) && Y > 0) {
+        alert("top 2 bottom");
+    }
+    else if ( Math.abs(Y) > Math.abs(X) && Y < 0 ) {
+        alert("bottom 2 top");
+    }
+    else{
+        alert("just touch");
+    }
+});
+
+
+/*---------- 实例 ------------- */
+// 1(下面还有2)
+
+var wp=$(e);
+var fun={
+	left:function(){},
+	right:function(){}
+}
+touchEvent(wp,fun);
+function touchEvent(wp,fun){
+	if(fun){var funBoole=true;}else{var funBoole=false;}
+	var x,y,startX,startY,moveEndX,moveEndY;
+	wp.on("touchstart", function(e) {
+//	    e.preventDefault();
+	    startX = e.originalEvent.changedTouches[0].pageX;
+	    startY = e.originalEvent.changedTouches[0].pageY;
+	});
+	wp.on("touchmove", function(e) {
+	    e.preventDefault();
+	    moveEndX = e.originalEvent.changedTouches[0].pageX;
+	    moveEndY = e.originalEvent.changedTouches[0].pageY;
+	    X = moveEndX - startX;
+	    Y = moveEndY - startY;
+	    if ( Math.abs(X) > Math.abs(Y) && X > 5 ) {
+	    	/*alert("left 2 right");*/
+	        if(funBoole && (typeof fun.right !="undefined")){fun.right(X);}
+	    }
+	    else if ( Math.abs(X) > Math.abs(Y) && X < -5 ) {
+	    	/*alert("right 2 left");*/
+	        if(funBoole && (typeof fun.left !="undefined")){fun.left(X);}
+	    }
+	    else if ( Math.abs(Y) > Math.abs(X) && Y > 5) {
+	        /*alert("top 2 bottom");*/
+			if(funBoole && (typeof fun.bottom !="undefined")){fun.bottom(X);}
+	    }
+	    else if ( Math.abs(Y) > Math.abs(X) && Y < -5 ) {
+	        /*alert("bottom 2 top");*/
+			if(funBoole && (typeof fun.top !="undefined")){fun.top(X);}
+	    }
+	    else{
+	        /*alert("just touch");*/
+	    }
+	});
+}
+// 2
+var wp=$(e);
+var fun={
+	start:function(o){
+		console.log(o);
+	},
+	move:function(o){
+		console.log(o);
+	},
+	end:function(o){
+		console.log(o);
+	}
+}
+touchEvent(wp,fun);
+function touchEvent(wp,fun){
+		var initial={
+			start:function(x){},
+			move:function(x){},
+			end:function(x){}
+		}
+		var o =$.extend({}, initial, fun);
+		var x,y,startX,startY,moveEndX,moveEndY;
+		wp.on("touchstart", function(e) {
+		    e.preventDefault();
+		    startX = e.originalEvent.changedTouches[0].pageX;
+		    startY = e.originalEvent.changedTouches[0].pageY;
+		    o.start({x:startX,y:startY});
+		});
+		wp.on("touchmove", function(e) {
+		    e.preventDefault();
+		    moveEndX = e.originalEvent.changedTouches[0].pageX;
+		    moveEndY = e.originalEvent.changedTouches[0].pageY;
+		    X = moveEndX - startX;
+		    Y = moveEndY - startY;
+		    o.move({x:startX,y:startY,x2:moveEndX,y2:moveEndY});
+		});
+		wp.on("touchend", function(e) {
+		    e.preventDefault();
+		    startX = e.originalEvent.changedTouches[0].pageX;
+		    startY = e.originalEvent.changedTouches[0].pageY;
+		    o.end({x:moveEndX,y:moveEndY});
+		});
+	}
+// 3
+function touchEvent(wp,fun){
+		var initial={
+			start:function(x){},
+			move:function(x){},
+			end:function(x){}
+		}
+		var o =$.extend({}, initial, fun);
+		var x,y,startX,startY,moveEndX,moveEndY;
+		wp.on("touchstart", function(e) {
+		    startX = e.originalEvent.changedTouches[0].pageX;
+		    startY = e.originalEvent.changedTouches[0].pageY;
+		    o.start({x:startX,y:startY});
+		    wp.on("touchmove",movefun);
+		});
+
+
+		wp.on("touchend", function(e) {
+			wp.off('touchmove',movefun);
+		    o.end({x:startX,y:startY,x2:moveEndX,y2:moveEndY});
+		});
+		function movefun(ee) {
+			ee.preventDefault();
+			moveEndX = ee.originalEvent.changedTouches[0].pageX;
+			moveEndY = ee.originalEvent.changedTouches[0].pageY;
+			X = moveEndX - startX;
+			Y = moveEndY - startY;
+			o.move({x:startX,y:startY,x2:moveEndX,y2:moveEndY});
+		}
+	}
