@@ -1,0 +1,32 @@
+
+git init //当前目录初始化git库
+git add -A  //提交所有变化
+git add -u  //提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)
+git add .  //提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件
+git status
+git commit -m "提交文字描述"
+git log
+git reflog
+
+/*配置本机的git*/
+git config --list  //查看配置
+git config --global user.name "r0o0en"  //用户名
+git config --global user.email 815054699@qq.com  //设置邮箱
+ssh-keygen -t rsa -C "815054699@qq.com" //生成密钥 邮箱同上
+ssh git@github.com  //检验是否链接上了github
+
+
+/*首次推送*/
+mkdir tmp      //创建推送目录
+cd tmp         //进入推送目录    
+git init       //设置该目录为推送
+touch README   //生成readme
+git add README //加入修改列表
+git commit -m 'first commit' //递交修改声明
+git remote add testGit  https://github.com/r0o0en/testGit.git //为远程Git更名为testGit
+git push -u testGit master //推送此次修改
+
+
+/*删除创建目录*/
+mkdir testName;
+rm -rf testName
