@@ -16,15 +16,21 @@ ssh-keygen -t rsa -C "815054699@qq.com" //生成密钥 邮箱同上
 ssh git@github.com  //检验是否链接上了github
 
 
-/*首次推送*/
+/*远程推送到github （testGit：为项目库名）*/
 mkdir tmp      //创建推送目录
 cd tmp         //进入推送目录    
 git init       //设置该目录为推送
 touch README   //生成readme
 git add README //加入修改列表
 git commit -m 'first commit' //递交修改声明
-git remote add testGit  https://github.com/r0o0en/testGit.git //为远程Git更名为testGit
+git remote add testGit  https://github.com/r0o0en/testGit.git //为远程Git更名为testGit  
 git push -u testGit master //推送此次修改
+
+/*远程获取github更新  （testGit：为项目库名）*/
+Git fetch testGit master   //首先从远程的origin的master主分支下载最新的版本到origin/master分支上
+git log -p master..testGit/master  //然后比较本地的master分支和origin/master分支的差别
+git merge testGit/master  //最后进行合并
+
 
 
 /*删除创建目录*/
