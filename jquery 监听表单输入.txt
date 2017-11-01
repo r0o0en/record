@@ -21,9 +21,24 @@
 
 // 调用
 $(obj).watch(function(_this,val){
-	
+
 });
-
-
 /* *****************************************/ 
 obj.on('input propertychange',function(){})
+
+
+
+$.fn.watch = function(callback) {
+	return this.each(function() {
+		//缓存以前的值  
+		var  before = $(this).val();
+		//event  
+		$(this).on('keyup paste', function() {
+			var val = $(this).val();
+			if(before !== val) {
+				before = $(this).val();
+				callback($(this), val);
+			}
+		});
+	});
+}

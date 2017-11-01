@@ -23,3 +23,8 @@
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     flex: 1;
+
+Æ½»¬ÒÆ¶¯
+.smooth-move{
+    -webkit-overflow-scrolling: touch;
+}
